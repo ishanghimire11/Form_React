@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 const SelectType = (props) => {
   const { data, handleChange, register, errors } = props;
   const { name, options } = data;
+
   return (
     <div>
       <select
@@ -20,6 +21,7 @@ const SelectType = (props) => {
           );
         })}
       </select>
+
       <p className="text-sm w-4/5 text-red-500">{errors[`${name}`]?.message}</p>
     </div>
   );
@@ -29,7 +31,7 @@ SelectType.propTypes = {
   data: PropTypes.object,
   handleChange: PropTypes.func,
   register: PropTypes.func,
-  errors: PropTypes.object
+  errors: PropTypes.object,
 };
 
 export default SelectType;

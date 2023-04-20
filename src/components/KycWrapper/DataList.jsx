@@ -57,7 +57,7 @@ const formInputs = [
             type: "radio",
             name: "gender",
             value: "male",
-            required: true
+            required: true,
           },
           {
             id: 132,
@@ -109,7 +109,7 @@ const formInputs = [
         fields: [
           {
             id: 151,
-            label: "Date (MM/DD/YYYY)",
+            label: "(MM/DD/YYYY)",
             type: "date",
             name: "dob",
             required: true,
@@ -375,7 +375,7 @@ const formInputs = [
             type: "text",
             name: "declareLastName",
             placeholder: "",
-            required: true
+            required: true,
           },
         ],
       },
@@ -385,7 +385,7 @@ const formInputs = [
         fields: [
           {
             id: 331,
-            label: "Date (MM/DD/YYYY)",
+            label: "(MM/DD/YYYY)",
             type: "date",
             name: "signDate",
             required: true,
@@ -395,7 +395,6 @@ const formInputs = [
     ],
   },
 ];
-
 
 const formValues = {
   firstName: "",
@@ -417,7 +416,7 @@ const formValues = {
   photo: "",
   declareFirsttName: "",
   declareLastName: "",
-  signDate: ""
+  signDate: "",
 };
 
 export { formInputs, formValues };

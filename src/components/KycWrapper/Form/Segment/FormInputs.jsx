@@ -6,6 +6,7 @@ import SelectType from "./FormTypes/Select";
 
 const FormInputs = (props) => {
   const { data, handleChange, register, errors } = props;
+  console.log(handleChange);
 
   return (
     <div className="grid grid-cols-2">
@@ -13,32 +14,57 @@ const FormInputs = (props) => {
         const { type, id } = inputs;
         if (type === "select") {
           return (
-            <SelectType data={inputs} key={id} handleChange={handleChange} register={register} errors={errors} />
+            <SelectType
+              data={inputs}
+              key={id}
+              handleChange={handleChange}
+              register={register}
+              errors={errors}
+            />
           );
-
-        } if (type === "file"){
+        }
+        if (type === "file") {
           return (
-            <FileType data={inputs} key={id} handleChange={handleChange} register={register} errors={errors} />
+            <FileType
+              data={inputs}
+              key={id}
+              handleChange={handleChange}
+              register={register}
+              errors={errors}
+            />
           );
-
-        } if (type === "radio" || type === "checkbox") {
+        }
+        if (type === "radio" || type === "checkbox") {
           return (
-            <Checkbox data={inputs} key={id} handleChange={handleChange} register={register} errors={errors} />
+            <Checkbox
+              data={inputs}
+              key={id}
+              handleChange={handleChange}
+              register={register}
+              errors={errors}
+            />
           );
-        }else {
+        } else {
           return (
-            <Common data={inputs} key={id} handleChange={handleChange} register={register} errors={errors} />
+            <Common
+              data={inputs}
+              key={id}
+              handleChange={handleChange}
+              register={register}
+              errors={errors}
+            />
           );
         }
       })}
     </div>
   );
 };
-FormInputs.propTypes={
+
+FormInputs.propTypes = {
   data: PropTypes.array,
   handleChange: PropTypes.func,
   register: PropTypes.func,
-  errors: PropTypes.object
+  errors: PropTypes.object,
 };
 
 export default FormInputs;

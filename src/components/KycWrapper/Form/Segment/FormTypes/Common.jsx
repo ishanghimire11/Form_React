@@ -12,12 +12,17 @@ const Common = (props) => {
       >
         {label}
       </label>
+
       <div>
         <input
           name={name}
           id={name}
-          onChange={handleChange}
-          className={"border-2 my-2 block w-5/6 p-2 text-label opacity-80 rounded-md"}
+          onChange={(e) => {
+            handleChange(e);
+          }}
+          className={
+            "border-2 my-2 block w-5/6 p-2 text-label opacity-80 rounded-md"
+          }
           value={value}
           type={type}
           placeholder={placeholder}
@@ -34,8 +39,7 @@ Common.propTypes = {
   data: PropTypes.object,
   handleChange: PropTypes.func,
   register: PropTypes.func,
-  errors: PropTypes.object
+  errors: PropTypes.object,
 };
-
 
 export default Common;
