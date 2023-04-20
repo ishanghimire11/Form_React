@@ -179,7 +179,7 @@ const formInputs = [
           {
             id: 171,
             label: "Contact Number",
-            type: "number",
+            type: "text",
             name: "contactNumber",
             placeholder: "Enter contact number",
             required: true,
@@ -276,6 +276,7 @@ const formInputs = [
       {
         id: 22,
         subHeading: "2. Proof of Address provided by Applicant",
+        optional: "optional",
         fields: [
           {
             id: 221,
@@ -374,6 +375,7 @@ const formInputs = [
             type: "text",
             name: "declareLastName",
             placeholder: "",
+            required: true
           },
         ],
       },

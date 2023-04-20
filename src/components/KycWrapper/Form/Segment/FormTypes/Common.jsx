@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
 const Common = (props) => {
-  const { data, handleChange } = props;
-  const { name, value, type, required, placeholder, label, errorMessage } = data;
+  const { data, handleChange, register, errors } = props;
+  const { name, value, type, placeholder, label } = data;
 
   return (
     <div>
@@ -20,19 +20,21 @@ const Common = (props) => {
           className={"border-2 my-2 block w-5/6 p-2 text-label opacity-80 rounded-md"}
           value={value}
           type={type}
-          required={required}
           placeholder={placeholder}
+          {...register(name)}
         />
       </div>
 
-      <p className="text-sm w-4/5 text-red-500">{errorMessage}</p>
+      <p className="text-sm w-4/5 text-red-500">{errors[`${name}`]?.message}</p>
     </div>
   );
 };
 
 Common.propTypes = {
   data: PropTypes.object,
-  handleChange: PropTypes.func
+  handleChange: PropTypes.func,
+  register: PropTypes.func,
+  errors: PropTypes.object
 };
 
 

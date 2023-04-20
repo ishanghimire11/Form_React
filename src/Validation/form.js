@@ -9,7 +9,7 @@ const formSchema = yup.object().shape({
   marital: yup.string().required("Select your current marital status"),
   dob: yup.string().required("DOB is required"),
   occupation: yup.string().required("Ocupation is required"),
-  contactNumber: yup.number().required("Contact number is required"),
+  contactNumber: yup.string().required("Contact number is required"),
   email: yup.string().email().required("Email is mandatory"),
   status: yup.string().required("Enter your status"),
   street: yup.string(),
@@ -18,7 +18,7 @@ const formSchema = yup.object().shape({
   state: yup.string(),
   zipCode: yup.string(),
   photo: yup.string(),
-  declareFirsttName: yup.string().required("Please enter your first name"),
+  declareFirstName: yup.string().required("Please enter your first name"),
   declareLastName: yup.string().required("Please enter your last name"),
   signDate: yup.string().required("Signature Date is mandatory")
 });

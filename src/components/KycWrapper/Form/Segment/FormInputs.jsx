@@ -5,7 +5,7 @@ import FileType from "./FormTypes/File";
 import SelectType from "./FormTypes/Select";
 
 const FormInputs = (props) => {
-  const { data, handleChange } = props;
+  const { data, handleChange, register, errors } = props;
 
   return (
     <div className="grid grid-cols-2">
@@ -13,21 +13,21 @@ const FormInputs = (props) => {
         const { type, id } = inputs;
         if (type === "select") {
           return (
-            <SelectType data={inputs} key={id} handleChange={handleChange} />
+            <SelectType data={inputs} key={id} handleChange={handleChange} register={register} errors={errors} />
           );
 
         } if (type === "file"){
           return (
-            <FileType data={inputs} key={id} handleChange={handleChange} />
+            <FileType data={inputs} key={id} handleChange={handleChange} register={register} errors={errors} />
           );
 
         } if (type === "radio" || type === "checkbox") {
           return (
-            <Checkbox data={inputs} key={id} handleChange={handleChange} />
+            <Checkbox data={inputs} key={id} handleChange={handleChange} register={register} errors={errors} />
           );
         }else {
           return (
-            <Common data={inputs} key={id} handleChange={handleChange} />
+            <Common data={inputs} key={id} handleChange={handleChange} register={register} errors={errors} />
           );
         }
       })}
@@ -36,7 +36,9 @@ const FormInputs = (props) => {
 };
 FormInputs.propTypes={
   data: PropTypes.array,
-  handleChange: PropTypes.func
+  handleChange: PropTypes.func,
+  register: PropTypes.func,
+  errors: PropTypes.object
 };
 
 export default FormInputs;

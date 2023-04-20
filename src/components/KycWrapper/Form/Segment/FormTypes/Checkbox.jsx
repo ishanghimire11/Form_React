@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
 const Checkbox = (props) => {
-  const { data, handleChange } = props;
-  const { name, value, type, label, required, errorMessage } = data;
+  const { data, handleChange, register } = props;
+  const { name, value, type, label } = data;
   return (
     <div>
       <div className="flex">
@@ -14,12 +14,11 @@ const Checkbox = (props) => {
             className={"border-2 mr-2"}
             value={value}
             type={type}
-            required={required}
+            {...register(name)}
           />
         </div>
         <label htmlFor={name}>{label}</label>
       </div>
-      <p className="text-sm w-4/5 text-red-500 mt-4">{errorMessage}</p>
     </div>
   );
 };
@@ -27,6 +26,7 @@ const Checkbox = (props) => {
 Checkbox.propTypes = {
   data: PropTypes.object,
   handleChange: PropTypes.func,
+  register: PropTypes.func,
 };
 
 export default Checkbox;

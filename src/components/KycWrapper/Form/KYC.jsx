@@ -2,17 +2,18 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { formInputs,formValues } from "/src/components/KycWrapper/DataList";
-import form from "/src/Validation/form";
+import formSchema from "/src/Validation/form";
 import Titles from "./Segment/Titles";
 
 
 const KYC = () => {
   const [ data, setData ] = useState(formValues);
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({
-    resolver: yupResolver(form),
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(formSchema),
   });
 
+  console.log(errors);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setData({
@@ -23,6 +24,7 @@ const KYC = () => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
+    console.log(data);
   };
 
   return (
