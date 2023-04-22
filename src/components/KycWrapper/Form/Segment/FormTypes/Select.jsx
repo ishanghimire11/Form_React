@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const SelectType = (props) => {
-  const { data, handleChange, register, errors } = props;
+  const { data, register, errors } = props;
   const { name, options } = data;
 
   return (
@@ -9,7 +9,6 @@ const SelectType = (props) => {
       <select
         name={name}
         id={name}
-        onChange={handleChange}
         className="bg-inherit border-2 p-2 my-2 text-label rounded-md"
         {...register(name)}
       >
@@ -29,7 +28,6 @@ const SelectType = (props) => {
 
 SelectType.propTypes = {
   data: PropTypes.object,
-  handleChange: PropTypes.func,
   register: PropTypes.func,
   errors: PropTypes.object,
 };

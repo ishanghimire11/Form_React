@@ -1,43 +1,27 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { formInputs, formValues } from "/src/components/KycWrapper/DataList";
+import { DevTool } from "@hookform/devtools";
+import { formInputs } from "/src/components/KycWrapper/DataList";
 import formSchema from "/src/Validation/form";
 import Titles from "./Segment/Titles";
 
 const KYC = () => {
-  const [ formData, setFormData ] = useState(formValues);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm({
     resolver: yupResolver(formSchema),
   });
 
-  console.log(formData);
-
-  const handleChange = (event) => {
-    console.log("ggclap");
-    const { name, value } = event.target;
-    setFormData({
-      ...formData, [name]: value
-    });
-  };
-
-  const onSubmitHandler = () => {
-    console.log("njdw");
+  const onSubmitHandler = (data) => {
+    console.log(data);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)}>
-      <Titles
-        data={formInputs}
-        handleChange={handleChange}
-        register={register}
-        errors={errors}
-      />
+      <Titles data={formInputs} register={register} errors={errors} />
 
       <div className="text-center border-t-2 pt-10 my-4">
         <button
@@ -48,6 +32,8 @@ const KYC = () => {
           Submit KYC
         </button>
       </div>
+
+      <DevTool control={control} />
     </form>
   );
 };

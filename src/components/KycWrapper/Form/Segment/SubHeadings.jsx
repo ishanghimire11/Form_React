@@ -2,13 +2,12 @@ import PropTypes from "prop-types";
 import FormInputs from "./FormInputs";
 
 const SubHeading = (props) => {
-  const { data, handleChange, register, errors } = props;
+  const { data, register, errors } = props;
 
   return (
     <div>
       {data.map((data) => {
         const { subHeading, fields, content, optional } = data;
-
         return (
           <div key={data.id} className="p-4">
             <p>{content}</p>
@@ -26,7 +25,6 @@ const SubHeading = (props) => {
 
             <FormInputs
               data={fields}
-              handleChange={handleChange}
               register={register}
               errors={errors}
             />
@@ -39,7 +37,6 @@ const SubHeading = (props) => {
 
 SubHeading.propTypes = {
   data: PropTypes.array,
-  handleChange: PropTypes.func,
   register: PropTypes.func,
   errors: PropTypes.object,
 };

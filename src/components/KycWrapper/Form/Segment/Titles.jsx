@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import SubHeading from "./SubHeadings";
 
 const Titles = (props) => {
-  const { data, handleChange, register, errors } = props;
+  const { data,register, errors } = props;
 
   return (
     <div>
@@ -15,7 +15,6 @@ const Titles = (props) => {
 
             <SubHeading
               data={subTitles}
-              handleChange={handleChange}
               register={register}
               errors={errors}
             />
@@ -28,7 +27,6 @@ const Titles = (props) => {
 
 Titles.propTypes = {
   data: PropTypes.array,
-  handleChange: PropTypes.func,
   register: PropTypes.func,
   errors: PropTypes.object,
 };

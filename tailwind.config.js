@@ -9,7 +9,8 @@ export default {
       colors: {
         "title": "#2C3345",
         "subHeading": "#555555",
-        "label": "6f6f6f"
+        "label": "6f6f6f",
+        "title-hover": "#38425a"
       }
     },
   },
