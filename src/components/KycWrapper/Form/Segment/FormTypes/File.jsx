@@ -3,22 +3,26 @@ import PropTypes from "prop-types";
 import importPhoto from "assets/upload.png";
 
 const FileType = (props) => {
-  const imageRef= useRef("");
-  const [ upload, setupload ] = useState("");
+  const imageRef = useRef(null);
+  const [ upload, setUpload ] = useState(null);
 
-  const { data, register } = props;
+  const { data, register, errors } = props;
   const { name, type, accept } = data;
+  const { ref, ...rest } = register(name);
 
   const handleuploadChange = (event) => {
     const { files } = event.target;
-    if (files) {
-      return setupload(URL.createObjectURL(files[0]));
+    if (files && files[0]) {
+      return setUpload(URL.createObjectURL(files[0]));
+    } else {
+      setUpload(null);
+      return (imageRef.current.value = null);
     }
   };
 
   const handleUploadDelete = () => {
-    setupload("");
-    return imageRef.current.value = "";
+    setUpload(null);
+    imageRef.current.value = null;
   };
 
   return (
@@ -43,20 +47,27 @@ const FileType = (props) => {
             <input
               type={type}
               id={name}
-              accept={accept}
+              // accept={accept}
               name={name}
-              {...register(name)}
               className="w-full text-sm text-slate-500
               file:mr-4 file:py-2 file:px-4 file:cursor-pointer
               file:rounded-full file:border-0
               file:text-sm file:font-semibold
               file:bg-title file:text-white
               hover:file:bg-title-hover"
+              {...rest}
+              ref={(e) => {
+                ref(e);
+                imageRef.current = e;
+              }}
               onChange={handleuploadChange}
-              ref={imageRef}
             />
           </div>
         </label>
+
+        <p className={`text-sm w-4/5 text-red-500 text-center mt-4  ${upload ? "" : "hidden"}`}>
+          {errors[`${name}`]?.message}
+        </p>
 
         <button
           id={`${name}-action-delete`}

@@ -57,7 +57,7 @@ const formInputs = [
             type: "radio",
             name: "gender",
             value: "male",
-            required: true,
+            checked: true,
           },
           {
             id: 132,
@@ -85,7 +85,7 @@ const formInputs = [
             type: "radio",
             name: "marital",
             value: "single",
-            required: true,
+            checked: true,
           },
           {
             id: 142,
@@ -185,7 +185,7 @@ const formInputs = [
             label: "Contact Number",
             type: "text",
             name: "contactNumber",
-            placeholder: "Enter contact number",
+            placeholder: "",
             required: true,
           },
           {
@@ -193,7 +193,7 @@ const formInputs = [
             label: "Email Address",
             type: "email",
             name: "email",
-            placeholder: "Enter your email",
+            placeholder: "",
             required: true,
           },
         ],
@@ -208,7 +208,7 @@ const formInputs = [
             type: "radio",
             name: "status",
             value: "resident",
-            required: true,
+            checked: true,
           },
           {
             id: 182,
@@ -241,7 +241,7 @@ const formInputs = [
             label: "Street Address",
             type: "text",
             name: "street",
-            placeholder: "Enter street line",
+            placeholder: "",
             required: true,
           },
           {

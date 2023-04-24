@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { DevTool } from "@hookform/devtools";
 import { formInputs } from "/src/components/KycWrapper/DataList";
-import formSchema from "/src/Validation/form";
+import formSchema from "/src/validation/form";
 import Titles from "./Segment/Titles";
 
 const KYC = () => {
@@ -12,7 +12,7 @@ const KYC = () => {
     formState: { errors },
     control,
   } = useForm({
-    resolver: yupResolver(formSchema),
+    resolver: yupResolver(formSchema)
   });
 
   const onSubmitHandler = (data) => {

@@ -1,25 +1,34 @@
 import * as yup from "yup";
 
+const FILE_SIZE = 1024 * 1024; // 1MB
+const SUPPORTED_FORMATS = [
+  "image/jpg",
+  "image/jpeg",
+  "image/gif",
+  "image/png",
+  "image/svg",
+];
+
 const formSchema = yup.object().shape({
   firstName: yup
     .string()
-    .matches(/^[A-Za-z0-9]*$/, "no special characters")
+    .matches(/^[A-Za-z0-9]*$/, "No special characters")
     .required("First name is required"),
 
   lastName: yup
     .string()
-    .matches(/^[A-Za-z0-9]*$/, "no special characters")
+    .matches(/^[A-Za-z0-9]*$/, "No special characters")
     .required("Last name is required"),
 
   fatherFirstName: yup
     .string()
-    .matches(/^[A-Za-z0-9]*$/, "letters and number only")
+    .matches(/^[A-Za-z0-9]*$/, "Letters and number only")
     .required("First name is required"),
 
   fatherLastName: yup
     .string()
-    .matches(/^[A-Za-z0-9]*$/, "letters and number only")
-    .required("First name is required"),
+    .matches(/^[A-Za-z0-9]*$/, "Letters and number only")
+    .required("Last name is required"),
 
   gender: yup.string().required("Please select a gender"),
 
@@ -33,7 +42,7 @@ const formSchema = yup.object().shape({
     .string()
     .matches(
       /^[+]?[(]?[+]?\d{2,4}[)]?[-\s]?\d{2,8}[-\s]?\d{2,8}$/,
-      "please enter a valid phone number"
+      "Please enter a valid phone number"
     )
     .required("Contact number is required"),
 
@@ -50,14 +59,27 @@ const formSchema = yup.object().shape({
 
   country: yup
     .string()
-    .matches(/^[a-zA-Z]+$/, "Enter a valid city")
+    .matches(/^[a-zA-Z]+$/, "Enter a valid country")
     .required("Enter your country"),
 
   state: yup.string(),
 
-  zipCode: yup.string().matches(/^[0-9]*$/, "zip code must be only numbers"),
+  zipCode: yup.string().matches(/^[0-9]*$/, "Zip code must be only numbers"),
 
-  photo: yup.mixed(),
+  proof: yup.string(),
+  
+  photo: yup
+  .mixed()
+  .test("fileFormat", "Unsupported Format", (value) => {
+    if (value && value[0]) {
+      return SUPPORTED_FORMATS.includes(value[0].type);
+    }
+  })
+  .test("fileSize", "File too large. Select image below 1 MB", (value) => {
+    if (value && value[0]) {
+      return value[0].size <= FILE_SIZE;
+    }
+  }),
 
   declareFirstName: yup.string().required("Please enter your first name"),
 

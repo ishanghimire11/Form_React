@@ -14,7 +14,8 @@ const Common = (props) => {
         <input
           name={name}
           id={name}
-          className="border-2 my-2 block w-5/6 p-2 text-label opacity-80 rounded-md"
+          className="border-2 my-2 block w-5/6 p-2
+          text-label opacity-80 rounded-md focus:outline-2 focus:outline-titleBg"
           value={value}
           type={type}
           placeholder={placeholder}

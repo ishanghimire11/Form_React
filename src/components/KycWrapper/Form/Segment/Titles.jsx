@@ -11,7 +11,7 @@ const Titles = (props) => {
 
         return (
           <div key={data.id}>
-            <p className="p-8 bg-title text-white my-10 text-3xl">{title}</p>
+            <p className="p-8 bg-titleBg text-white my-10 text-3xl rounded-sm">{title}</p>
 
             <SubHeading
               data={subTitles}

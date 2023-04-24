@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         "title": "#2C3345",
+        "titleBg": "#585ea8",
         "subHeading": "#555555",
         "label": "6f6f6f",
         "title-hover": "#38425a"
