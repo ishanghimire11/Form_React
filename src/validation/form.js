@@ -66,20 +66,21 @@ const formSchema = yup.object().shape({
 
   zipCode: yup.string().matches(/^[0-9]*$/, "Zip code must be only numbers"),
 
-  proof: yup.string(),
-  
+  proof: yup.string().required(),
+
   photo: yup
-  .mixed()
-  .test("fileFormat", "Unsupported Format", (value) => {
-    if (value && value[0]) {
-      return SUPPORTED_FORMATS.includes(value[0].type);
-    }
-  })
-  .test("fileSize", "File too large. Select image below 1 MB", (value) => {
-    if (value && value[0]) {
-      return value[0].size <= FILE_SIZE;
-    }
-  }),
+    .mixed()
+    .required("Please select a photo for selected option")
+    .test("fileFormat", "Unsupported Format", (value) => {
+      if (value && value[0]) {
+        return SUPPORTED_FORMATS.includes(value[0].type);
+      }
+    })
+    .test("fileSize", "File too large. Select image below 1 MB", (value) => {
+      if (value && value[0]) {
+        return value[0].size <= FILE_SIZE;
+      }
+    }),
 
   declareFirstName: yup.string().required("Please enter your first name"),
 

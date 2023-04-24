@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 const Checkbox = (props) => {
   const { data,register } = props;
   const { name, value, type, label, checked } = data;
-  // console.log(`${name}-${value}`);
 
   return (
     <>

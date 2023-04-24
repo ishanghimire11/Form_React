@@ -281,7 +281,6 @@ const formInputs = [
       {
         id: 22,
         subHeading: "2. Proof of Address provided by Applicant",
-        optional: "optional",
         fields: [
           {
             id: 221,
@@ -289,6 +288,7 @@ const formInputs = [
             type: "radio",
             name: "proof",
             value: "passport",
+            checked: true
           },
           {
             id: 222,
